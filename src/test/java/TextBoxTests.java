@@ -27,7 +27,7 @@ public class TextBoxTests {
         $("#currentAddress").setValue("Russia, Kaluga");
         $("#permanentAddress").setValue("Russia, Kaluga");
 
-        $("#submit").click();
+        $("#submit").pressEnter();
         $("#output").shouldHave(text("Olga Palushina"), text("lqoka2015@yandex.ru"), text("Russia, Kaluga"), text("Russia, Kaluga"));
 
     }
