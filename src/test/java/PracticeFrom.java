@@ -11,11 +11,10 @@ import static com.codeborne.selenide.Selenide.*;
 public class PracticeFrom {
 
     @BeforeAll
-    static void beforeAll() {
+    static void basicBrowserSettings() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
     }
 
     @Test
@@ -42,9 +41,12 @@ public class PracticeFrom {
         $$(".react-datepicker__day").findBy(text("14")).click();
 
         // Блок Subjects
-        $("#subjectsInput").setValue("Math").pressEnter();
-        $("#subjectsInput").setValue("Physics").pressEnter();
-        $("#subjectsInput").setValue("English").pressEnter();
+        $("#subjectsInput").setValue("Math");
+        $$(".subjects-auto-complete__option").findBy(text("Maths")).click();
+        $("#subjectsInput").setValue("Phy");
+        $$(".subjects-auto-complete__option").findBy(text("Physics")).click();
+        $("#subjectsInput").setValue("Eng");
+        $$(".subjects-auto-complete__option").findBy(text("English")).click();
 
         // Блок Hobbies
         $("label[for='hobbies-checkbox-1']").click();
@@ -67,20 +69,15 @@ public class PracticeFrom {
 
 
         // Проверка текста в форме после заполнения
-        $(".table-responsive").
-                shouldHave(
-                        text("Olga Palushina"),
-                        text("lqoka2015@yandex.ru"),
-                        text("Female"),
-                        text("9222404055"),
-                        text("14 July,2003"),
-                        text("Maths, Physics, English"),
-                        text("Sports, Music"),
-                        text("MyPhoto.jpg"),
-                        text("Russia, Kaluga"),
-                        text("NCR Delhi")
-                );
-
-
+        $(".table-responsive").shouldHave(text("Olga Palushina"));
+        $(".table-responsive").shouldHave(text("lqoka2015@yandex.ru"));
+        $(".table-responsive").shouldHave(text("Female"));
+        $(".table-responsive").shouldHave(text("9222404055"));
+        $(".table-responsive").shouldHave(text("14 July,2003"));
+        $(".table-responsive").shouldHave(text("Maths, Physics, English"));
+        $(".table-responsive").shouldHave(text("Sports, Music"));
+        $(".table-responsive").shouldHave(text("MyPhoto.jpg"));
+        $(".table-responsive").shouldHave(text("Russia, Kaluga"));
+        $(".table-responsive").shouldHave(text("NCR Delhi"));
     }
 }
