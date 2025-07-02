@@ -1,25 +1,24 @@
 package tests;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static tests.TestData.*;
 
 public class TextBoxWithPagesObjectsTests extends TestBase{
-    String userName = "Olga Palushina";
-    String email = "lqokag@gmail.com";
-    String currentAddress= "Russia, Kaluga";
-    String permanentAddress= "Russia, Kaluga";
+
 
     @Test
     void successfulTextBoxTest() {
         textBoxPages.openPage()
-                .setUserName(userName)
-                .setEmail(email)
+                .setUserName(fullUserName)
+                .setEmail(userEmail)
                 .setCurrentAddress(currentAddress)
-                .setPermanentAddress(currentAddress)
+                .setPermanentAddress(permanentAddress)
                 .submitForm();
 
         textBoxPages
-                .verifyResult("Name:", userName)
-                .verifyResult("Email:", email)
+                .verifyResult("Name:", fullUserName)
+                .verifyResult("Email:", userEmail)
                 .verifyResult("Current Address :", currentAddress)
                 .verifyResult("Permananet Address :", permanentAddress);
     }

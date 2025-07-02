@@ -1,19 +1,12 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import tests.TestData;
+
+import static tests.TestData.*;
 
 public class PracticeFormWithPagesObjectsTest extends TestBase {
-    String userName = "Olga";
-    String lastName = "Palushina";
-    String email = "lqokag@gmail.com";
-    String gender = "Female";
-    String phoneNumber = "8965412365";
-    String[] birthday  = new String[] {"31", "July", "2003"};
-    String subjects = "Maths";
-    String hobbies = "Reading";
-    String uploadFile = "MyPhoto.jpg";
-    String address= "123 Main St.";
-    String[] stateAndCity  = new String[] {"NCR", "Delhi"};
+
 
     @Test
     void successfulPracticeFormTest() {
@@ -21,28 +14,28 @@ public class PracticeFormWithPagesObjectsTest extends TestBase {
         practiceFormPages.openPage()
                 .setFirstName(userName)
                 .setLastName(lastName)
-                .setEmail(email)
+                .setEmail(userEmail)
                 .setGender(gender)
                 .setNumber(phoneNumber)
-                .setBirthDate(birthday[0], birthday[1], birthday[2])
+                .setBirthDate(dayOfBirth, monthOfBirth, yearOfBirth)
                 .setSubjects(subjects)
                 .setHobbies(hobbies)
                 .uploadPicture(uploadFile)
                 .setAddress(address)
-                .selectStateAndCity(stateAndCity[0], stateAndCity[1])
+                .selectStateAndCity(state, city)
                 .submitForm();
 
         practiceFormPages.verifyResultsModalAppears()
                 .verifyResult("Student Name", userName + " " + lastName)
-                .verifyResult("Student Email", email)
+                .verifyResult("Student Email", userEmail)
                 .verifyResult("Gender", gender)
                 .verifyResult("Mobile", phoneNumber)
-                .verifyResult("Date of Birth", birthday[0] + " " + birthday[1] + "," + birthday[2])
+                .verifyResult("Date of Birth", dayOfBirth + " " + monthOfBirth + "," + yearOfBirth)
                 .verifyResult("Subjects", subjects)
                 .verifyResult("Hobbies", hobbies)
                 .verifyResult("Picture", uploadFile)
                 .verifyResult("Address", address)
-                .verifyResult("State and City", stateAndCity[0] + " " + stateAndCity[1]);
+                .verifyResult("State and City", state + " " + city);
     }
 
     @Test
