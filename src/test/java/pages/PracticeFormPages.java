@@ -87,7 +87,7 @@ public class PracticeFormPages {
     }
 
     public PracticeFormPages uploadPicture(String value) {
-        pictureInput.uploadFromClasspath("MyPhoto.jpg");
+        pictureInput.uploadFromClasspath(value);
 
         return this;
     }
