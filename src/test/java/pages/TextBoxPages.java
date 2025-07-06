@@ -21,7 +21,11 @@ public class TextBoxPages {
 
     public TextBoxPages openPage() {
         open("/text-box");
-        //Убираем рекламу
+
+        return this;
+    }
+
+    public TextBoxPages removeAds() {
         executeJavaScript("$('footer').remove();");
         executeJavaScript("$('#fixedban').remove();");
 
