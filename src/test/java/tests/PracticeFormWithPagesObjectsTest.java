@@ -1,8 +1,11 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.PracticeFormPages;
 
 public class PracticeFormWithPagesObjectsTest extends TestBase {
+    PracticeFormPages practiceFormPages = new PracticeFormPages();
+
     String userName = "Olga";
     String lastName = "Palushina";
     String email = "lqokag@gmail.com";
