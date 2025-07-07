@@ -13,6 +13,7 @@ public class TextBoxWithPagesObjectsTests extends TestBase{
     @Test
     void successfulTextBoxTest() {
         textBoxPages.openPage()
+                .removeAds()
                 .setUserName(userName)
                 .setEmail(email)
                 .setCurrentAddress(currentAddress)

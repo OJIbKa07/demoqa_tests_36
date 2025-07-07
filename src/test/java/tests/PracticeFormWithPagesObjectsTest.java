@@ -22,6 +22,7 @@ public class PracticeFormWithPagesObjectsTest extends TestBase {
     void successfulPracticeFormTest() {
 
         practiceFormPages.openPage()
+                .removeAds()
                 .setFirstName(userName)
                 .setLastName(lastName)
                 .setEmail(email)
@@ -52,6 +53,7 @@ public class PracticeFormWithPagesObjectsTest extends TestBase {
     void successfulMinFormTest() {
 
         practiceFormPages.openPage()
+                .removeAds()
                 .setFirstName(userName)
                 .setLastName(lastName)
                 .setGender(gender)
@@ -68,6 +70,7 @@ public class PracticeFormWithPagesObjectsTest extends TestBase {
     void negativeMinFormTest() {
 
         practiceFormPages.openPage()
+                .removeAds()
                 .setFirstName(userName)
                 .setLastName(lastName)
                 .setGender(gender)

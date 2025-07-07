@@ -30,7 +30,11 @@ public class PracticeFormPages {
 
     public PracticeFormPages openPage() {
         open("/automation-practice-form");
-        //Убираем рекламу
+
+        return this;
+    }
+
+    public PracticeFormPages removeAds() {
         executeJavaScript("$('footer').remove();");
         executeJavaScript("$('#fixedban').remove();");
 
