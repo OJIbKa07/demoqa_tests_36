@@ -8,53 +8,37 @@ import java.util.Date;
 import static tests.TestData.*;
 
 public class PracticeFormWithPagesObjectsTest extends TestBase {
-    TestDataGenerator data = new TestDataGenerator();
-    String userName = data.getFirstName();
-    String lastName = data.getLastName();
-    String userEmail = data.getEmail();
-    String gender = data.getGender();
-    String phoneNumber = data.getPhoneNumber();
-    String address = data.getAddress();
-    String subjects = data.getSubject();
-    String hobbies = data.getHobby();
-
-    Date birthday = data.getBirthday();
-    String dayOfBirth = data.getDayOfBirth(birthday);
-    String monthOfBirth = data.getMonthOfBirth(birthday);
-    String yearOfBirth = data.getYearOfBirth(birthday);
-
-    String state = data.getState();
-    String city = data.getCity(state);
+    SuitTestData data = new SuitTestData();
 
     @Test
     void successfulPracticeFormTest() {
 
         practiceFormPages.openPage()
                 .removeAds()
-                .setFirstName(userName)
-                .setLastName(lastName)
-                .setEmail(userEmail)
-                .setGender(gender)
-                .setNumber(phoneNumber)
-                .setBirthDate(dayOfBirth, monthOfBirth, yearOfBirth)
-                .setSubjects(subjects)
-                .setHobbies(hobbies)
+                .setFirstName(data.userName)
+                .setLastName(data.lastName)
+                .setEmail(data.userEmail)
+                .setGender(data.gender)
+                .setNumber(data.phoneNumber)
+                .setBirthDate(data.dayOfBirth, data.monthOfBirth, data.yearOfBirth)
+                .setSubjects(data.subjects)
+                .setHobbies(data.hobbies)
                 .uploadPicture(uploadFile)
-                .setAddress(address)
-                .selectStateAndCity(state, city)
+                .setAddress(data.address)
+                .selectStateAndCity(data.state, data.city)
                 .submitForm();
 
         practiceFormPages.verifyResultsModalAppears()
-                .verifyResult("Student Name", userName + " " + lastName)
-                .verifyResult("Student Email", userEmail)
-                .verifyResult("Gender", gender)
-                .verifyResult("Mobile", phoneNumber)
-                .verifyResult("Date of Birth", dayOfBirth + " " + monthOfBirth + "," + yearOfBirth)
-                .verifyResult("Subjects", subjects)
-                .verifyResult("Hobbies", hobbies)
+                .verifyResult("Student Name", data.userName + " " + data.lastName)
+                .verifyResult("Student Email", data.userEmail)
+                .verifyResult("Gender", data.gender)
+                .verifyResult("Mobile", data.phoneNumber)
+                .verifyResult("Date of Birth", data.dayOfBirth + " " + data.monthOfBirth + "," + data.yearOfBirth)
+                .verifyResult("Subjects", data.subjects)
+                .verifyResult("Hobbies", data.hobbies)
                 .verifyResult("Picture", uploadFile)
-                .verifyResult("Address", address)
-                .verifyResult("State and City", state + " " + city);
+                .verifyResult("Address", data.address)
+                .verifyResult("State and City", data.state + " " + data.city);
     }
 
     @Test
@@ -63,16 +47,16 @@ public class PracticeFormWithPagesObjectsTest extends TestBase {
 
         practiceFormPages.openPage()
                 .removeAds()
-                .setFirstName(userName)
-                .setLastName(lastName)
-                .setGender(gender)
-                .setNumber(phoneNumber)
+                .setFirstName(data.userName)
+                .setLastName(data.lastName)
+                .setGender(data.gender)
+                .setNumber(data.phoneNumber)
                 .submitForm();
 
         practiceFormPages.verifyResultsModalAppears()
-                .verifyResult("Student Name", userName + " " + lastName)
-                .verifyResult("Gender", gender)
-                .verifyResult("Mobile", phoneNumber);
+                .verifyResult("Student Name", data.userName + " " + data.lastName)
+                .verifyResult("Gender", data.gender)
+                .verifyResult("Mobile", data.phoneNumber);
     }
 
     @Test
@@ -81,9 +65,9 @@ public class PracticeFormWithPagesObjectsTest extends TestBase {
 
         practiceFormPages.openPage()
                 .removeAds()
-                .setFirstName(userName)
-                .setLastName(lastName)
-                .setGender(gender)
+                .setFirstName(data.userName)
+                .setLastName(data.lastName)
+                .setGender(data.gender)
                 .setNumber("")
                 .submitForm();
 
